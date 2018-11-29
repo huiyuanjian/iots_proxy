@@ -1,0 +1,51 @@
+
+
+spring:
+  # 环境 dev|test|prod
+  profiles:
+    active: dev
+    port: 8082
+
+# mqtt
+mqtt_host: tcp://10.10.170.128:61613
+mqtt_username: admin
+mqtt_password: password
+mqtt_clientid: clientid
+mqtt_timeout: 10
+mqtt_keepalive: 20
+
+mqttclientpool:
+  maximal: 100
+  minimum: 5
+  initial: 5
+  step: 10
+
+#l时间调度
+schedules:
+  scanning: 0/1 * * * * ?  #扫描队列
+  upload: 0/30 * * * * ?  #上传日志时间
+  delete:  0 0 0 30 * ?  #删除日志时间
+  reupload: 0/5 * * * * ?  #删除日志时间
+  ping: 0/20 * * * * ? #发送心跳时间
+
+#log
+logging:
+  level: info
+  pathL: C:\\Users\\Administrator\\AppData\\Local\\IOTS\\logs\\
+
+#模块的名称
+module:
+  name: IOTs_Proxy
+
+#端口
+server:
+  port: 8082
+
+#消息回复次数
+messages:
+  cycle:
+    index: 5
+
+#ioserver
+ioserver_ip: 10.10.170.174
+ioserver_port: 12380
